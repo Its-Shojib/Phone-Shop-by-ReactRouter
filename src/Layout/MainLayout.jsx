@@ -4,14 +4,14 @@ import Footer from "../Pages/Footer/Footer";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="min-h-screen relative">
             <div className="max-w-screen-xl mx-auto my-5">
                 <Header></Header>
             </div>
-            <div className="min-h-screen max-w-screen-xl mx-auto my-5">
+            <div className=" max-w-screen-xl mx-auto my-5">
                 <Outlet></Outlet>
             </div>
-            <div className="max-w-full">
+            <div className="min-w-full absolute bottom-0">
                 <Footer></Footer>
             </div>
         </div>
