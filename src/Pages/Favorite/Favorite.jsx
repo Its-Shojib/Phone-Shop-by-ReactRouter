@@ -2,7 +2,7 @@
 
 const Favorite = () => {
     return (
-        <div>
+        <div className="min-h-screen">
             <p>This is Favorite</p>
         </div>
     );
