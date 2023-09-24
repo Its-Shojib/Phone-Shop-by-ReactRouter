@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-
+import swal from 'sweetalert';
 const ViewDetails = () => {
     let { id } = useParams();
     let [phone, setPhone] = useState({});
@@ -18,7 +18,7 @@ const ViewDetails = () => {
         if (!favoritesItem) {
             favoriteArray.push(phone);
             localStorage.setItem('favorites', JSON.stringify(favoriteArray));
-            alert("Product Added");
+            swal("Good job!", "Products added successfully!", "success");
         }
         else {
             let isExist = favoritesItem.find(phone => phone.id === id);
@@ -26,18 +26,13 @@ const ViewDetails = () => {
             if (!isExist) {
                 favoriteArray.push(...favoritesItem, phone)
                 localStorage.setItem('favorites', JSON.stringify(favoriteArray));
-                alert("Product Added");
+                swal("Good job!", "Products added successfully!", "success");
             }
             else {
-                document.getElementById('my_modal').showModal()
+                swal("Error!", "No duplicate !", "error");
             }
-
-
-
-
         }
     }
-
 
     return (
         <div>
@@ -70,26 +65,7 @@ const ViewDetails = () => {
 
                     </div>
                 </div>
-
             </div>
-            {/* Modal Code */}
-            <div>
-                {/* Open the modal using document.getElementById('ID').showModal() method */}
-                {/* <button className="btn" onClick={() => document.getElementById('my_modal').showModal()}>open modal</button> */}
-                <dialog id="my_modal" className="modal modal-bottom sm:modal-middle">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">Already ache tata!!!</h3>
-                        <p className="py-4"></p>
-                        <div className="modal-action">
-                            <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
-                                <button className="btn">Close</button>
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
-            </div>
-
         </div>
     );
 };
